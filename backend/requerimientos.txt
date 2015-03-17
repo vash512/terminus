@@ -1,0 +1,4 @@
+django==1.6
+pillow
+south
+#cambiar po otro django-summernote
