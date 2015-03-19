@@ -1,18 +1,7 @@
 from django.contrib import admin
-from django.forms import ModelForm
-from suit_redactor.widgets import RedactorWidget
 from terminos.models import Corpus, Termino, Documento, AreaContable
-from django_summernote.admin import SummernoteModelAdmin
 
-class TerminoForm(ModelForm):
-    class Meta:
-        widgets = {
-            'descripcion': RedactorWidget(editor_options={'lang': 'en'}),
-        }
-
-class TerminoAdmin(SummernoteModelAdmin):
-    #form = TerminoForm
-
+class TerminoAdmin(admin.ModelAdmin):
     exclude = ('user',)
     list_display = ('nombre', 'significado', 'corpus')
     search_fields=('clave', 'nombre', 'descripcion','corpus__nombre', 'corpus__descripcion')
