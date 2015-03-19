@@ -1,4 +1,6 @@
 django==1.6
+djangocms_admin_style
+django-suit-redactor
 pillow
 south
 #cambiar po otro django-summernote
