@@ -9,8 +9,11 @@ SECRET_KEY = '@k3-99c%n+9$lyi(%do_!&ruajjed*3&j0&h(e^$r3c%v6g0bt'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'terminus_db',
+        'USER': 'belen_ter',
+        'PASSWORD': 'belen_passwd',
+        'HOST': 'localhost',
     }
 }
 

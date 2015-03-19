@@ -1,0 +1,6 @@
+#Requerimientos de Desarrollo
+django==1.6.5
+pillow
+south
+psycopg2
+

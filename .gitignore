@@ -15,4 +15,8 @@ temp/
 backend/terminus/media/
 
 #settings locales
-#backend/terminus/terminus/local_settings.py
+backend/terminus/terminus/local_settings.py
+
+#Front-end stuff:
+node_modules/
+
