@@ -1,5 +1,4 @@
 from django.contrib import admin
-from django.forms import ModelForm
 from terminos.models import Corpus, Termino, Documento, AreaContable
 
 class TerminoAdmin(admin.ModelAdmin):
