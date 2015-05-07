@@ -20,5 +20,9 @@ backend/terminus/terminus/local_settings.py
 
 #Front-end stuff:
 node_modules/
-
-
+front-end/temp/
+front-end/css/prefix/
+bower_components/
+#el siguiente directorio es creado por foundation new, no es necesario solo si el core de
+#foundation necesite cambios
+ontomex_fn/
