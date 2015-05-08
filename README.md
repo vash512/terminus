@@ -26,5 +26,6 @@ Requerimientos Generales
 
 1. Fotos by [https://unsplash.com/](https://unsplash.com/)
 2. Iconos fueron usados de [icomoon.io](https://icomon.io)
-3. Logo y demas imagenes procesadas [GIMP](www.gimp.org.es/) e [Inkscape](https://inkscape.org/es/)
-4. Proyecto en Tesis de Belen Uria
+3. Logo y demas imagenes procesadas [GIMP](http://www.gimp.org.es/) e [Inkscape](https://inkscape.org/es/)
+4. Favicon's generados por [Realfavicon](www.realfavicon.net)
+5. Proyecto en Tesis de Belen Uria
