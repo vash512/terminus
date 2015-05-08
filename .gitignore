@@ -12,6 +12,7 @@ target/
 temp/
 
 *.sqlite3
+*_db
 backend/terminus/media/
 
 #settings locales
