@@ -1,0 +1,14 @@
+/* TEAM */
+    Client: Ontomex
+    Designer & Developer: Belen Uria y Jesús Alvarado Garzón
+    Contact: jesus@phyroserver.com, belen.s.uria@hotmail.com
+    Twitter: @xtornasol512
+    G+: https://plus.google.com/106876007161547457170
+    From: Puebla, Mexico.
+
+/* SITE */
+    Last update: monthly 
+    Language: Castellano
+    Doctype:HTML5  
+    Standards: HTML5, CSS3, JavaScript
+    Software: Sublime Text, Gimp, inskcape

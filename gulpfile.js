@@ -6,13 +6,15 @@ var gulp = require('gulp'),
     minifycss = require('gulp-minify-css'), 
     uglify = require('gulp-uglify');
 
-
+//Direcciones de Archivos: CSS's y JS's
 var srcCSS = 'front-end/css/src/*.css',
-    distCSS = 'front-end/css/',
+    //distPrefix es el CSS con los prefijos de los navegadores
     distPrefix = 'front-end/css/prefix',
+    distCSS = 'front-end/css/',
     srcJS = 'front-end/js/src/*.js', 
     distJS = 'front-end/js/';
 
+//Task para los estilos CSS
 gulp.task('styl', function(){
     gulp.src(srcCSS)
         .pipe(plumber())
@@ -23,6 +25,7 @@ gulp.task('styl', function(){
         .pipe(gulp.dest(distCSS));
 });
 
+//Task para archivos Javascript
 gulp.task('scripts', function(){
     gulp.src(srcJS)
         .pipe(plumber())
@@ -31,12 +34,14 @@ gulp.task('scripts', function(){
         .pipe(gulp.dest(distJS));
 });
 
+//Task para supervisar cambios
 gulp.task('watch', function(){
     gulp.watch(srcCSS, ['styl']);
     gulp.watch(srcJS, ['scripts']);
 });
-gulp.task('default', function(){
-    console.log('Welcome from PhyroServer!');
-    gulp.watch(srcCSS, ['styl']);
-    gulp.watch(srcJS, ['scripts']);
+
+//Task default
+//Se ejecuta con $ gulp
+gulp.task('default',['styl', 'scripts', 'watch'], function(){
+    console.log('Welcome to Ontomex FrontEnd!');
 });
