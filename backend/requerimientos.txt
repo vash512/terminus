@@ -1,6 +1,7 @@
-django==1.6
-djangocms_admin_style
-django-suit-redactor
-pillow
-south
-#cambiar po otro django-summernote
+Django==1.6.5
+django-summernote==0.6.8
+djangocms-admin-style==0.2.7
+Pillow==2.8.1
+psycopg2==2.6
+South==1.0.2
+wheel==0.24.0
