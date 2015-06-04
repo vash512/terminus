@@ -8,7 +8,7 @@ admin.autodiscover()
 urlpatterns = patterns('',
     # Examples:
     # url(r'^$', 'terminus.views.home', name='home'),
-    url(r'^$', include('home.urls')),
+    url(r'^',include('home.urls')),
 
     url(r'^admin/', include(admin.site.urls)),
     url(r'^summernote/', include('django_summernote.urls')),

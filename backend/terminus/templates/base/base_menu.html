@@ -1,0 +1,60 @@
+{% extends "base/base.html" %}
+{% block content %}
+<!-- Header -->
+<nav class="top-bar" data-topbar role="navigation">
+  <ul class="title-area">
+    <li class="name">
+      
+      <h1><a href="/"><img width="110" src="{{ STATIC_URL }}img/logo/isologotipo_300x120_white.png" alt="Ontomex Home"></a></h1>
+    </li>
+     <!-- Remove the class "menu-icon" to get rid of menu icon. Take out "Menu" to just have icon alone -->
+    <li class="toggle-topbar menu-icon"><a href="#"><span>Menu</span></a></li>
+  </ul>
+
+  <section class="top-bar-section">
+    <!-- Right Nav Section -->
+    <ul class="right">
+    <li class="active"><a href="/">HOME</a></li>
+      <li class=""><a href="/acercade">ACERCA DE</a></li>
+      <li class=""><a href="/contacto">CONTACTO</a></li>
+      
+    </ul>
+
+    <!-- Left Nav Section -->
+    <ul class="left">
+      <li><a href="/login">INICIAR SESION</a></li>
+    </ul>
+  </section>
+</nav>
+<header>
+    
+</header>
+
+    {% block contenido %}{% endblock contenido %}
+
+<!-- Footer -->
+<footer>
+   <div class="row padding-top">
+       <div class="small-12 columns text-center">
+        <h3>Mapa de Sitio</h3>
+        <nav class="foonav">
+          <a href="/">Home</a>
+          <a href="/login">Login</a>
+          <a href="/acercade">Acerca de</a>  
+          <a href="/corpuscontable">Ontologia</a>                
+          <a href="/contacto">Contacto</a>
+        </nav>
+        </div>
+   </div>
+   <div class="row padding-top">
+     <div class="small-12 columns text-center foo">
+      <p><img width="180"src="{{ STATIC_URL }}img/logo/isologotipo_300x120.png" alt=""></p>
+      <p><blockquote> El conocimiento a tu alcance.</blockquote></p>
+       <p>Copyright © 2015 <a href="/">Ontomex.com</a>
+       
+       <p> Proyecto creado por <a href="mailto:belen.s.uria@hotmail.com" target="_blank">Belén Salas Uría</a></p>
+     </div>
+   </div>
+</footer>
+
+{% endblock content %}
