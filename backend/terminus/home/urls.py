@@ -5,6 +5,7 @@ urlpatterns=patterns('home.views',
 	url(r'^$', 'index_view', name='index'),
     url(r'^contacto/', 'contacto' ),
     url(r'^acercade/', 'acercade'),
+    url(r'^corpuscontable', 'corpus'),
     url(r'^login/', 'log_in'),
     url(r'^logout/', 'log_out'),
 

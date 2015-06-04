@@ -20,6 +20,11 @@ def acercade(request):
     return render_to_response('home/acercade.html',
                           context_instance=RequestContext(request))
 
+def corpus(request):
+    'Pagina de corpus donde se muestran los terminos contables'
+    return render_to_response('home/corpus.html',
+                          context_instance=RequestContext(request))
+
 def log_in(request):
     'Pagina de Login(Inicio de sesion) de Ontomex'
     return redir('/admin')

@@ -2,6 +2,7 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>{% block title %}Ontomex, Ontologia de Contabilidad para Empresas{% endblock title %}</title>
     <!-- css/src es para Desarrollo cambia a css/*.min.css en deploy-->
     <link rel="stylesheet" href="{{STATIC_URL}}css/normalize.min.css">
@@ -9,6 +10,7 @@
     <link rel="stylesheet" href="{{STATIC_URL}}css/ontomex.min.css">
     <script src="{{STATIC_URL}}js/vendor/modernizr.js"></script>
     <!-- Bloque para metaTags de SEO -->
+    <meta name="description" content="{% block descripcion %}Bienvenido a la Ontologia de Contabilidad Ontomex{% endblock descripcion %}" />
 
     <!-- Bloque para icons y más -->
     <link rel="apple-touch-icon" sizes="57x57" href="{{STATIC_URL}}img/icons/apple-touch-icon-57x57.png">
