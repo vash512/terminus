@@ -13,6 +13,9 @@ blockquote {
     font-style: italic;
     margin-bottom: 1rem;
 }
+.mg-zero{
+    margin: 0px;
+}
 .padding-top{
     padding-top: 2em;
 }

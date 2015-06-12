@@ -1,0 +1,27 @@
+{% extends "base/base_menu.html" %}
+{% block title %}Busqueda de Terminos{% endblock title %}
+{% block description %}Busqueda de Terminos  y Documentos actualmente en la Base de Datos{% endblock description %}
+{% block contenido %}
+<header class="row padding-top">
+    <div class="medium-8 medium-centered columns text-center">
+        <h1>Busqueda de Terminos</h1>
+        <p class="mg-zero">Numero Total de Terminos: {{totalTerminos}}</p>
+        <p class="mg-zero">Numero Total de Documentos: {{totalDocumentos}}</p>
+        <form class="padding-top" id="formulario" name="form" method="post" action=".">{% csrf_token %}
+            <div class="small-12 columns">
+              <div class="row collapse postfix-round">
+                <div class="small-9 columns">
+                  <input type="search" name="search" placeholder="Busqueda de Terminos" required>
+                </div>
+                <div class="small-3 columns">
+                  <a href="/q/termino" class="button round postfix">Buscar</a>
+                </div>
+              </div>
+            </div>
+        </form>
+    </div>
+</header>
+{% block listas %}
+    
+{% endblock listas %}
+{% endblock contenido %}

@@ -7,4 +7,42 @@
         <h1>Contacto con Ontomex</h1>
     </div>
 </header>
+<section class="row padding-top">
+    <div class="medium-6 medium-centered columns text-center">
+        <form id="formulario" name="form" method="post" action=".">{% csrf_token %}
+            <div class="row collapse prefix-radius ">
+                <div class="small-3 columns">
+                  <span class="prefix">Nombre</span>
+                </div>
+                <div class="small-9 columns">
+                  <input id="id_username" maxlength="100" name="username" type="text"  placeholder="Nombre de Usuario | Username" required>
+                </div>
+              </div>
+              <div class="row collapse prefix-radius">
+                <div class="small-3 columns">
+                  <span id="id_username" class="prefix">Email</span>
+                </div>
+                <div class="small-9 columns">
+                  <input id="id_email" name="email" type="email"  placeholder="usuario@dominio.com" required>
+                </div>
+              </div>
+              <div class="row">
+                <div class="small-12 columns">
+                  <label class="text-left"><h5>A continuación escribe tu mensaje</h5>
+                    <textarea rows="6" placeholder="Aqui escribe tu mensaje, texto o información" required></textarea>
+                  </label>
+                </div>
+              </div>
+              
+            <div class="row">
+                <div class="small-6 columns">
+                    <button class="round expand left">Enviar</button>
+                </div>
+                <div class="small-6 columns">
+                    <a class="button round expand secondary right" href="/">Regresar</a>
+                </div>
+            </div>
+        </form>
+    </div>
+</section> 
 {% endblock contenido %}

@@ -23,8 +23,18 @@
 
     <!-- Left Nav Section -->
     <ul class="left">
-      {% if usuario %}
-         <li><a href="#">{{usuario.username|upper}}</a></li>
+      {% if not usuario %}
+         <li class="has-dropdown">
+        <a href="#">{{usuario.username}}USERNAME</a>
+        <ul class="dropdown">
+          {% if not usuario.isStaff %}
+            <li><a href="/admin">Administración del Sistema</a></li>
+          {% endif %}
+          <li><a href="/corpuscontable">Corpus Contable</a></li>
+          <li><a href="/corpuscontable/documentos">Documentos</a></li>
+          <li><a href="/corpuscontable/documentos">Cerrar Sesión</a></li>
+        </ul>
+      </li>
       {% else %}
          <li><a href="/login">INICIAR SESION</a></li>
       {% endif %}
@@ -32,9 +42,6 @@
     </ul>
   </section>
 </nav>
-<header>
-    
-</header>
 
     {% block contenido %}{% endblock contenido %}
 

@@ -1,0 +1,47 @@
+{% extends "base/base_menu.html" %}
+{% block title %}Busqueda del Termino: {{ termino.nombre }}{% endblock title %}
+{% block description %}Terminos  y Documentos actualmente en la Base de Datos{% endblock description %}
+{% block contenido %}
+<aside class="row padding-top">
+    <div class="medium-8 medium-centered columns text-center">
+    <form id="formulario" name="form" method="post" action=".">{% csrf_token %}
+            <div class="small-12 columns">
+              <div class="row collapse postfix-round">
+                <div class="small-9 columns">
+                  <input type="search" name="search" placeholder="Busqueda de Terminos" required>
+                </div>
+                <div class="small-3 columns">
+                  <a href="/q/termino" class="button round secondary postfix">Buscar</a>
+                </div>
+              </div>
+            </div>
+        </form>
+    </div>
+</aside>
+{% block listas %}
+<section class="row padding-top">
+    <!--{% for termino in terminos %} -->
+        <div class="medium-6 columns text-center">
+            <ul class="pricing-table">
+              <li class="title">{{termino.nombre}}termino.nombre</li>
+              <li class="price">{{termino.descripcion}}termino.descripcion</li>
+              <li class="bullet-item">{{termino.siglas}}termino.siglas/li>
+              <li class="bullet-item">Subdominio: <a href="/terminos/termino">{{termino.areacontable}}termino.areacontable</a></li>
+              <li class="bullet-item">Documentos:</li>
+              <!--{% for doc in termino.docs  %} -->
+                <li class="bullet-item">{{doc.nombre}}doc.nombre</li>
+              <!-- {% endfor %} -->
+            </ul>
+        </div>
+   <!-- {% endfor %} -->
+</section>
+<section class="row">
+    <div class="medium-8 medium-centered columns text-center">
+        <panel class="callout radius">
+            <h4>No encontramos ningún termino parecido :(</h4>
+            <p>Intenta otra forma de escribirlo, o sus siglas</p>
+        </panel>
+    </div>
+</section>
+{% endblock listas %}
+{% endblock contenido %}

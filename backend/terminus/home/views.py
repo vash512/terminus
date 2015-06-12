@@ -35,6 +35,35 @@ def registro(request):
     return render_to_response('home/registro.html',
                           context_instance=RequestContext(request))
 
+def terminos(request):
+    return render_to_response('terminos/terminos.html',
+                          context_instance=RequestContext(request))
+
+def termino_detalle(request):
+    return render_to_response('terminos/termino_detalle.html',
+                          context_instance=RequestContext(request))
+
+def docs(request):
+    return render_to_response('terminos/terminos.html',
+                          context_instance=RequestContext(request))
+
+def doc_detalle(request):
+    return render_to_response('terminos/termino_detalle.html',
+                          context_instance=RequestContext(request))
+
+def busqueda(request):
+    return render_to_response('terminos/busqueda.html',
+                          context_instance=RequestContext(request))
+
+terminos = { "nombre" :"Contabilidad",
+           "descripcion" : "Termino de Contabilidad",
+           "areaC": "Contabilidad Financiera"}
+def busqueda_list(request):
+    return render_to_response('terminos/busqueda_list.html',
+                          terminos,
+                          context_instance=RequestContext(request))
+
+
 @login_required(login_url='/login')
 def log_out(request):
     logout(request)
