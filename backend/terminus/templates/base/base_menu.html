@@ -23,7 +23,12 @@
 
     <!-- Left Nav Section -->
     <ul class="left">
-      <li><a href="/login">INICIAR SESION</a></li>
+      {% if usuario %}
+         <li><a href="#">{{usuario.username|upper}}</a></li>
+      {% else %}
+         <li><a href="/login">INICIAR SESION</a></li>
+      {% endif %}
+     
     </ul>
   </section>
 </nav>

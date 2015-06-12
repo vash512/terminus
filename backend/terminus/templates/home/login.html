@@ -1,1 +1,19 @@
-login.html
+{% extends "base/base_menu.html" %}
+{% block title %}Login de Ontomex{% endblock title %}
+{% block description %}Inicio de Sesión de Ontomex{% endblock description %}
+{% block contenido %}
+<section class="row padding-top">
+    <div class="medium-8 medium-centered columns text-center">
+        <form id="formulario" name="form" method="post" action=".">{% csrf_token %}
+            <div class="row collapse prefix-radius">
+                <div class="small-3 columns">
+                  <span class="prefix">Usuario</span>
+                </div>
+                <div class="small-9 columns">
+                  <input type="text" placeholder="Nombre de Usuario | Username">
+                </div>
+              </div>
+        </form>
+    </div>
+</section>    
+{% endblock contenido %}

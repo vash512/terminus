@@ -4,6 +4,7 @@ from django.http import HttpResponseRedirect as redir
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import login, authenticate, logout
 
+
 # Create your views here.
 def index_view(request):
     'Pagina de Bienvenida de Ontomex'
@@ -27,7 +28,12 @@ def corpus(request):
 
 def log_in(request):
     'Pagina de Login(Inicio de sesion) de Ontomex'
-    return redir('/admin')
+    return render_to_response('home/login.html',
+                          context_instance=RequestContext(request))
+
+def registro(request):
+    return render_to_response('home/registro.html',
+                          context_instance=RequestContext(request))
 
 @login_required(login_url='/login')
 def log_out(request):
