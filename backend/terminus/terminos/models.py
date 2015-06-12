@@ -5,7 +5,11 @@ from django.contrib.auth.models import User
 from actions import Normalizador
 
 class Corpus(models.Model):
-    nombre = models.CharField(max_length=100, unique=True)
+    class Meta:
+        verbose_name = "Corpus Contable"
+        verbose_name_plural = "Corpus Contables"
+    nombre = models.CharField(max_length=100, unique=True, verbose_name = "Area Contable")
+    siglas = models.CharField(blank=True, null=True, max_length=5)
     descripcion = models.TextField()
     user = models.ForeignKey(User)
     def __unicode__(self):
@@ -14,9 +18,9 @@ class Corpus(models.Model):
 class Termino(models.Model):
     nombre = models.CharField(max_length=100, unique=True)
     descripcion = models.TextField()
-    significado = models.CharField(max_length=10)
+    significado = models.CharField(max_length=10, verbose_name = "Siglas")
     documento = models.ManyToManyField('Documento', blank=True, null=True)
-    corpus = models.ForeignKey(Corpus)
+    corpus = models.ForeignKey(Corpus, verbose_name = "Subdominio")
     user = models.ForeignKey(User)
     def __unicode__(self):
         return self.nombre
@@ -24,18 +28,11 @@ class Termino(models.Model):
 class Documento(models.Model):
     nombre = models.CharField(max_length=255, unique=True)
     archivo = models.FileField(upload_to='archivos/documentos')
-    areaContable = models.ForeignKey('AreaContable')
+    #areaContable = models.ForeignKey('AreaContable')
+    areaContable = models.ManyToManyField('Corpus', blank=True, null=True)
     def __unicode__(self):
         return self.nombre
 
-class AreaContable(models.Model):
-    areaContable = models.CharField(max_length=100, unique=True)
-    descripcion = models.TextField()
-    class Meta:
-        verbose_name = "Area Contable"
-        verbose_name_plural = "Areas Contable"
-    def __unicode__(self):
-        return self.areaContable
 
 class UrlTermino(models.Model):
     termino = models.ForeignKey('Termino')
