@@ -15,7 +15,7 @@
                   <span class="prefix">Nombre</span>
                 </div>
                 <div class="small-9 columns">
-                  <input id="id_username" maxlength="100" name="username" type="text"  placeholder="Nombre de Usuario | Username" required>
+                  <input id="id_name" maxlength="100" name="name" type="text"  placeholder="Nombre de Usuario | Username" required>
                 </div>
               </div>
               <div class="row collapse prefix-radius">
@@ -29,9 +29,14 @@
               <div class="row">
                 <div class="small-12 columns">
                   <label class="text-left"><h5>A continuación escribe tu mensaje</h5>
-                    <textarea rows="6" placeholder="Aqui escribe tu mensaje, texto o información" required></textarea>
+                    <textarea rows="6" name="msg"  placeholder="Aqui escribe tu mensaje, texto o información" required></textarea>
                   </label>
                 </div>
+                {%if enviado%}
+                <div class="small-12 columns">
+                    En mensage fue enviado
+                </div>
+                {%endif%}
               </div>
               
             <div class="row">

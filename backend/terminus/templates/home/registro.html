@@ -4,6 +4,7 @@
 {% block contenido %}
 <section class="row padding-top">
     <div class="medium-6 medium-centered columns text-center">
+      {%if not regTer%}
         <form id="formulario" name="form" method="post" action=".">{% csrf_token %}
             <h1>Registro en el Sistema </h1>
             <div class="row collapse prefix-radius padding-top">
@@ -47,6 +48,9 @@
 
             </div>
         </form>
+      {%else%}
+      mensaje o codigo de que ya termino el registro, o direccionamiento a algo mas
+      {%endif%}
     </div>
 </section>    
 {% endblock contenido %}  
