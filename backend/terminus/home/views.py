@@ -13,7 +13,7 @@ import mandrill
 # Create your views here.
 def index_view(request):
     'Pagina de Bienvenida de Ontomex'
-    return render_to_response('home/index.html',
+    return render_to_response('home/index.html',{'c_home':'active'},
                           context_instance=RequestContext(request))
 
 def contacto(request):
@@ -44,18 +44,18 @@ def contacto(request):
         result = mandrill_client.messages.send(message=message, async=False)
         msgEnv=True
 
-    ctx={'enviado':msgEnv}
+    ctx={'enviado':msgEnv, 'c_contacto':'active'}
     return render_to_response('home/contacto.html',ctx,
                           context_instance=RequestContext(request))
 
 def acercade(request):
     'Pagina de acerca de Ontomex'
-    return render_to_response('home/acercade.html',
+    return render_to_response('home/acercade.html',{'c_about':'active'},
                           context_instance=RequestContext(request))
 
 def corpus(request):
     'Pagina de corpus donde se muestran los terminos contables'
-    return render_to_response('home/corpus.html',
+    return render_to_response('home/corpus.html',{'c_corpus':'active'},
                           context_instance=RequestContext(request))
 
 def log_in(request):
