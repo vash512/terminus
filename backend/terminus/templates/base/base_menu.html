@@ -24,19 +24,19 @@
     <!-- Left Nav Section -->
     <ul class="left">
       {% if not user.is_anonymous %}
-         <li class="has-dropdown">
-        <a href="#">{{user.username}}</a>
-        <ul class="dropdown">
-          {% if user.is_staff %}
-            <li><a href="/admin">Administración del Sistema</a></li>
-          {% endif %}
-          <li><a href="/corpuscontable">Corpus Contable</a></li>
-          <li><a href="/corpuscontable/documentos">Documentos</a></li>
-          <li><a href="/logout">Cerrar Sesión</a></li>
-        </ul>
-      </li>
+        <li class="has-dropdown {{c_login}}">
+          <a href="#">HOLA <span style="color:rgb(213, 165, 245);">{{user.username|upper}}</span></a>
+          <ul class="dropdown">
+            {% if user.is_staff %}
+              <li><a href="/admin">Administración del Sistema</a></li>
+            {% endif %}
+            <li><a href="/corpuscontable">Corpus Contable</a></li>
+            <li><a href="/corpuscontable/documentos">Documentos</a></li>
+            <li><a href="/logout">Cerrar Sesión</a></li>
+          </ul>
+        </li>
       {% else %}
-         <li><a href="/login">INICIAR SESION</a></li>
+         <li class="{{c_login}}"><a href="/login">INICIAR SESION</a></li>
       {% endif %}
      
     </ul>

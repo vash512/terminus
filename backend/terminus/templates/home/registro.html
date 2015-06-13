@@ -31,7 +31,7 @@
                   <input type="password" id="id_password" name="password" placeholder="Contraseña" required>
                 </div>
                 <div class="small-12 columns">
-                    {%if error%}<p class="error">{{error}}</p>{%endif%}
+                    {%if error%}<small class="error" style="font-size:.9rem;">{{error}}</small>{%endif%}
                 </div>
               </div>
             <div class="row">
@@ -49,7 +49,9 @@
             </div>
         </form>
       {%else%}
-      mensaje o codigo de que ya termino el registro, o direccionamiento a algo mas
+      <h2>Listo ya te has Registrado</h2>
+      <h5>Ahora ya puedes ir al formulario de Inicio de Sesión</h5>
+      <p style="padding-top:1em;"><a class="button round success" href="/login">INICIAR SESIÓN</a></p>
       {%endif%}
     </div>
 </section>    

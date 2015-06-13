@@ -25,7 +25,7 @@ def contacto(request):
         msg=request.POST.get('msg','')
         mail=request.POST.get('email','')
         mensaje="""
-        Se ha resivido un mensaje de Contacto con Ontomex<br>
+        Se ha recibido un mensaje de Contacto con Ontomex<br>
         Nombre: %s<br>
         Correo: %s<br>
         Mensaje: <br>
@@ -79,12 +79,13 @@ def log_in(request):
                     error="El usuario no existe, verifique que este bien escrito"
             else:
                 error="Datos invalidos en el formulario"
-            ctx={'error':error}
+            ctx={'error':error, 'c_login':'active'}
             return render_to_response('home/login.html', ctx,
                           context_instance=RequestContext(request))
         else:
             #Login
             return render_to_response('home/login.html',
+                          {'c_login':'active'},
                           context_instance=RequestContext(request))
     else:
         return HttpResponseRedirect('/')
@@ -151,11 +152,11 @@ def registro(request):
                     user.save()
                     registrado=True
                 else:
-                    error="El correo %s ya esta ciendo usado por otro usuario, seleccione otro"%(mail)
+                  error="El correo %s ya esta siendo usado por otro usuario, seleccione otro"%(mail)
                 
             else:
                 error="El usuario %s ya existe, seleccionar otro nombre de cuenta"%(usuario)
 
-        ctx={"regTer":registrado, "error": error}
+        ctx={"regTer":registrado, "error": error, 'c_login':'active'}
         return render_to_response('home/registro.html', ctx,
                           context_instance=RequestContext(request))
