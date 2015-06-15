@@ -4,6 +4,9 @@
 {% block contenido %}
 <aside class="row padding-top">
     <div class="medium-8 medium-centered columns text-center">
+    	total de terminos: {{nTer}}<br>
+    	{%if q%}total de terminos encontrados con {{q}}: {{nTerQ}}
+
     <form id="formulario" name="form" method="get" action="/terminos">
             <div class="small-12 columns">
               <div class="row collapse postfix-round">

@@ -102,6 +102,8 @@ def terminos(request):
     pag=request.GET.get('pagina','')
     idT=request.GET.get('id','')
     termino=None
+    nTer=0
+    nTerQ=0
     if idT:
         try:
             termino=Termino.objects.get(id=idT)
@@ -112,20 +114,28 @@ def terminos(request):
         if not pag:
             pag=1
         if q:
-            terminos=Termino.objects.filter(Q(nombre__icontains=q)|Q(significado__icontains=q)|Q(descripcion__icontains=q))
+            terminos=Termino.objects.filter(
+                Q(nombre__icontains=q)|
+                Q(significado__icontains=q)|
+                Q(descripcion__icontains=q))
+            nTerQ=len(terminos)
         else:
             terminos=Termino.objects.all()
+            nTer=len(terminos)
 
         if terminos:
+            
             terminos=Paginador(terminos, maximo, pag)
 
-        ctx={'q':q, 'terminos':terminos}
+        ctx={'q':q, 'terminos':terminos, 'nTer':nTer, 'nTerQ':nTerQ}
         '''
         Variables y su funcion en la plantilla
-        q   Contiene la busqueda solicitada por el cliente
+        q           Contiene la busqueda solicitada por el cliente
         terminos    Lista de los terminos, si no se manda ninguna q, entonses
                     retorna la lista completa, es importante no crear "terminos"
                     como variable global, porque ensima la funcion terminos()
+        nTer        Numero de terminos, total
+        nTerQ       Numero de terminos encontrados con q
         '''
         return render_to_response('terminos/terminos.html',ctx,
                           context_instance=RequestContext(request))
