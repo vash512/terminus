@@ -9,6 +9,12 @@ from django.contrib.auth.models import User
 from terminus.settings import API_KEY
 import mandrill
 
+from terminos.models import Termino
+from django.db.models import Q
+from actions import Paginador
+#numero maximo de elemento spor paginacion
+maximo=3
+
 
 # Create your views here.
 def index_view(request):
@@ -92,7 +98,40 @@ def log_in(request):
 
 
 def terminos(request):
-    return render_to_response('terminos/terminos.html',
+    q=request.GET.get('search','')
+    pag=request.GET.get('pagina','')
+    idT=request.GET.get('id','')
+    termino=None
+    if idT:
+        try:
+            termino=Termino.objects.get(id=idT)
+        except  :
+            pass
+        
+    if not termino:
+        if not pag:
+            pag=1
+        if q:
+            terminos=Termino.objects.filter(Q(nombre__icontains=q)|Q(significado__icontains=q)|Q(descripcion__icontains=q))
+        else:
+            terminos=Termino.objects.all()
+
+        if terminos:
+            terminos=Paginador(terminos, maximo, pag)
+
+        ctx={'q':q, 'terminos':terminos}
+        '''
+        Variables y su funcion en la plantilla
+        q   Contiene la busqueda solicitada por el cliente
+        terminos    Lista de los terminos, si no se manda ninguna q, entonses
+                    retorna la lista completa, es importante no crear "terminos"
+                    como variable global, porque ensima la funcion terminos()
+        '''
+        return render_to_response('terminos/terminos.html',ctx,
+                          context_instance=RequestContext(request))
+    else:
+        ctx={'termino':termino}
+        return render_to_response('terminos/termino_detalle.html',ctx,
                           context_instance=RequestContext(request))
 
 def termino_detalle(request):

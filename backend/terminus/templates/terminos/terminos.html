@@ -1,6 +1,71 @@
-{% extends "terminos/busqueda_list.html" %}
-{% block title %}Corpus Contable{% endblock title %}
-{% block description %}Lista de Terminos actualmente en la Base de Datos{% endblock description %}
+{% extends "base/base_menu.html" %}
+{% block title %}{%if q%}Busqueda del Termino: {{ q }}{%else%}Terminos{%endif%} {% endblock title %}
+{% block description %}Terminos  y Documentos actualmente en la Base de Datos{% endblock description %}
 {% block contenido %}
+<aside class="row padding-top">
+    <div class="medium-8 medium-centered columns text-center">
+    <form id="formulario" name="form" method="get" action="/terminos">
+            <div class="small-12 columns">
+              <div class="row collapse postfix-round">
+                <div class="small-9 columns">
+                  <input type="search" name="search" placeholder="Busqueda de Terminos"{%if q%} value='{{q}}'{%endif%}>
+                </div>
+                <div class="small-3 columns">
+                  <button class="round expand left">Buscar</button>
+                </div>
+              </div>
+            </div>
+    </form>
+    </div>
+</aside>
+{% block listas %}
+{%if terminos%}
+<section class="row padding-top">
+    <!--{% for termino in terminos %} -->
+        <div class="medium-6 columns text-center">
+            <ul class="pricing-table">
+              <a href="/terminos?id={{termino.id}}"><li class="title">{{termino.nombre}}</li></a>
+              <li class="price">{{termino.descripcion}}</li>
+              <li class="bullet-item">{{termino.significado}}</li>
+              <li class="bullet-item">Subdominio: <a href="/corpuscontable?id={{termino.corpus.id}}">{{termino.corpus}}</a></li>
+              <li class="bullet-item">Documentos:</li>
+              <!--{% for doc in termino.documento.all  %} -->
+                <a href="{{doc.archivo.url}}" target="_blank"><li class="bullet-item">{{doc.nombre}}</li></a>
+              <!-- {% endfor %} -->
+            </ul>
+        </div>
+   <!-- {% endfor %} -->
+</section>
 
+<!-- Links basicos del grupo de paginacion -->
+  <!-- inicio -->
+  <a href="/terminos{%if q%}?search={{q}}{%endif%}">Inicio</a><br>
+      
+      <!-- Anterior -->
+      {%if terminos.has_previous%}
+      <a href="/terminos?{%if q%}search={{q}}&{%endif%}pagina={{terminos.previous_page_number}}">anterior {{terminos.previous_page_number}}</a><br>
+      {%endif%}
+
+      pagina actual:{{terminos.number}}<br>
+
+      <!-- Siguiente -->
+      {%if terminos.has_next%}
+      <a href="/terminos?{%if q%}search={{q}}&{%endif%}pagina={{terminos.next_page_number}}">siguiente {{terminos.next_page_number}}</a><br>
+      {%endif%}
+  <!-- final -->
+  <a href="/terminos?{%if q%}search={{q}}&{%endif%}pagina={{terminos.paginator.num_pages}}">Fin</a>
+<!-- grupo de paginacion-->
+{%endif%}
+
+{%if q and not terminos%}
+<section class="row">
+    <div class="medium-8 medium-centered columns text-center">
+        <panel class="callout radius">
+            <h4>No encontramos ningún termino parecido a {{q}} :(</h4>
+            <p>Intenta otra forma de escribirlo, o sus siglas</p>
+        </panel>
+    </div>
+</section>
+{%endif%}
+{% endblock listas %}
 {% endblock contenido %}

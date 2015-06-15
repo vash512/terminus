@@ -1,1 +1,43 @@
 {% extends "base/base_menu.html" %}
+{% block title %}{%if q%}Busqueda del Termino: {{ q }}{%else%}Terminos{%endif%} {% endblock title %}
+{% block description %}Terminos  y Documentos actualmente en la Base de Datos{% endblock description %}
+{% block contenido %}
+<aside class="row padding-top">
+    <div class="medium-8 medium-centered columns text-center">
+    <form id="formulario" name="form" method="get" action="/terminos">
+            <div class="small-12 columns">
+              <div class="row collapse postfix-round">
+                <div class="small-9 columns">
+                  <input type="search" name="search" placeholder="Busqueda de Terminos"{%if q%} value='{{q}}'{%endif%}>
+                </div>
+                <div class="small-3 columns">
+                  <button class="round expand left">Buscar</button>
+                </div>
+              </div>
+            </div>
+    </form>
+    </div>
+</aside>
+{% block listas %}
+
+
+<section class="row padding-top">
+        <div class="medium-6 columns text-center">
+            <ul class="pricing-table">
+              <li class="title">{{termino.nombre}}</li>
+              <li class="price">{{termino.descripcion}}</li>
+              <li class="bullet-item">{{termino.significado}}</li>
+              <li class="bullet-item">Subdominio: <a href="/corpuscontable?id={{termino.corpus.id}}">{{termino.corpus}}</a></li>
+              <li class="bullet-item">Documentos:</li>
+              <!--{% for doc in termino.documento.all  %} -->
+                <a href="{{doc.archivo.url}}" target="_blank"><li class="bullet-item">{{doc.nombre}}</li></a>
+              <!-- {% endfor %} -->
+            </ul>
+        </div>
+</section>
+
+  <a href="/terminos">Inicio Terminos</a><br>
+
+
+{% endblock listas %}
+{% endblock contenido %}
