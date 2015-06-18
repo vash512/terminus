@@ -14,10 +14,10 @@
   <section class="top-bar-section">
     <!-- Right Nav Section -->
     <ul class="right">
-    <li class="{{c_home}}"><a href="/">HOME</a></li>
-      <li class="{{c_about}}"><a href="/acercade">ACERCA DE</a></li>
-      <li class="{{c_contacto}}"><a href="/contacto">CONTACTO</a></li>
-      <li class="{{c_corpus}}"><a href="/corpuscontable">ONTOLOGIA</a></li>
+    <li class="{{c_home}}"><a href="/"><span class="icon-home"></span>HOME</a></li>
+      <li class="{{c_about}}"><a href="/acercade"><span class="icon-library"></span>ACERCA DE</a></li>
+      <li class="{{c_contacto}}"><a href="/contacto"><span class="icon-envelop"></span>CONTACTO</a></li>
+      <li class="{{c_corpus}}"><a href="/corpuscontable"><span class="icon-books"></span>ONTOLOGIA</a></li>
       
     </ul>
 
@@ -25,18 +25,18 @@
     <ul class="left">
       {% if not user.is_anonymous %}
         <li class="has-dropdown {{c_login}}">
-          <a href="#">HOLA <span style="color:rgb(213, 165, 245);">{{user.username|upper}}</span></a>
+          <a href="#">HOLA <span style="color:rgb(213, 165, 245);margin-right:6px;">{{user.username|upper}}</span><span style="color:rgb(213, 165, 245);" class="icon-smile"></span></a>
           <ul class="dropdown">
             {% if user.is_staff %}
-              <li><a href="/admin">Administración del Sistema</a></li>
+              <li><a href="/admin"><span class="icon-cog"></span>Administración del Sistema</a></li>
             {% endif %}
-            <li><a href="/corpuscontable">Corpus Contable</a></li>
-            <li><a href="/corpuscontable/documentos">Documentos</a></li>
-            <li><a href="/logout">Cerrar Sesión</a></li>
+            <li><a href="/terminos"><span class="icon-books"></span>Corpus Contable</a></li>
+            <li><a href="/terminos"><span class="icon-book"></span>Documentos</a></li>
+            <li><a href="/logout"><span class="icon-switch"></span>Cerrar Sesión</a></li>
           </ul>
         </li>
       {% else %}
-         <li class="{{c_login}}"><a href="/login">INICIAR SESION</a></li>
+         <li class="{{c_login}}"><a href="/login"><span class="icon-user"></span>INICIAR SESION</a></li>
       {% endif %}
      
     </ul>

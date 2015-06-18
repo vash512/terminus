@@ -4,17 +4,21 @@
 {% block contenido %}
 <aside class="row padding-top">
     <div class="medium-8 medium-centered columns text-center">
-    	total de terminos: {{nTer}}<br>
-    	{%if q%}total de terminos encontrados con {{q}}: {{nTerQ}}{%endif%}
+    <h3><a href="/terminos">Corpus Contable</a></h3>
+    	{%if q%} 
+        <p>Total de terminos encontrados con <kbd>{{q}}</kbd>: <em>{{nTerQ}}</em></p>
+      {% else %}
+        <p>Total de terminos: {{nTer}}</p>
+      {%endif%}
 
     <form id="formulario" name="form" method="get" action="/terminos">
             <div class="small-12 columns">
-              <div class="row collapse postfix-round">
+              <div class="row collapse postfix-radius">
                 <div class="small-9 columns">
                   <input type="search" name="search" placeholder="Busqueda de Terminos"{%if q%} value='{{q}}'{%endif%}>
                 </div>
                 <div class="small-3 columns">
-                  <button class="round expand left">Buscar</button>
+                  <button class="postfix radius">Buscar</button>
                 </div>
               </div>
             </div>
@@ -23,9 +27,9 @@
 </aside>
 {% block listas %}
 {%if terminos%}
-<section class="row padding-top">
+  <section class="row padding-top">
     <!--{% for termino in terminos %} -->
-        <div class="medium-6 columns text-center">
+        <article class="medium-6 columns text-center">
             <ul class="pricing-table">
               <a href="/terminos?id={{termino.id}}"><li class="title">{{termino.nombre}}</li></a>
               <li class="price">{{termino.descripcion}}</li>
@@ -36,39 +40,48 @@
                 <a href="{{doc.archivo.url}}" target="_blank"><li class="bullet-item">{{doc.nombre}}</li></a>
               <!-- {% endfor %} -->
             </ul>
-        </div>
+        </article>
    <!-- {% endfor %} -->
-</section>
+  </section>
 
 <!-- Links basicos del grupo de paginacion -->
   <!-- inicio -->
-  <a href="/terminos{%if q%}?search={{q}}{%endif%}">Inicio</a><br>
-      
-      <!-- Anterior -->
-      {%if terminos.has_previous%}
-      <a href="/terminos?{%if q%}search={{q}}&{%endif%}pagina={{terminos.previous_page_number}}">anterior {{terminos.previous_page_number}}</a><br>
-      {%endif%}
-
-      pagina actual:{{terminos.number}}<br>
-
-      <!-- Siguiente -->
-      {%if terminos.has_next%}
-      <a href="/terminos?{%if q%}search={{q}}&{%endif%}pagina={{terminos.next_page_number}}">siguiente {{terminos.next_page_number}}</a><br>
-      {%endif%}
-  <!-- final -->
-  <a href="/terminos?{%if q%}search={{q}}&{%endif%}pagina={{terminos.paginator.num_pages}}">Fin</a>
-<!-- grupo de paginacion-->
-{%endif%}
-
-{%if q and not terminos%}
-<section class="row">
-    <div class="medium-8 medium-centered columns text-center">
-        <panel class="callout radius">
-            <h4>No encontramos ningún termino parecido a {{q}} :(</h4>
-            <p>Intenta otra forma de escribirlo, o sus siglas</p>
-        </panel>
-    </div>
+<section class="row padding-top">
+  <footer class="medium-8 medium-centered columns text-center">
+        <ul class="button-group round even-5">
+          <li><a href="/terminos{%if q%}?search={{q}}{%endif%}" class="button secondary">INICIO</a></li>
+          {%if terminos.has_previous%}
+          <li><a href="/terminos?{%if q%}search={{q}}&{%endif%}pagina={{terminos.previous_page_number}}" class="button secondary"><span class="icon-undo2"></span>ANT.</a></li>
+          {% else %}
+          <li><a href="#" class="button secondary disabled"><span class="icon-undo2"></span>ANT.</a></li>
+          {%endif%}
+          <li><a href="#" class="button secondary"><span class="icon-location"></span>{{terminos.number}}</a></li>
+          {%if terminos.has_next%}
+          <li><a href="/terminos?{%if q%}search={{q}}&{%endif%}pagina={{terminos.next_page_number}}" class="button secondary"><span class="icon-redo2"></span>SIG.</a></li>
+          {% else %}
+          <li><a href="#" class="button secondary disabled"><span class="icon-redo2"></span>SIG.</a></li>
+          {%endif%}
+          <li><a href="/terminos?{%if q%}search={{q}}&{%endif%}pagina={{terminos.paginator.num_pages}}" class="button secondary">FIN</a></li>
+        </ul>
+  </footer>
 </section>
 {%endif%}
-{% endblock listas %}
+
+    {%if q and not terminos%}
+      <section class="row">
+          <div class="medium-8 medium-centered columns text-center">
+              <div class="panel callout radius">
+                  <h4>No encontramos ningún termino parecido a <kbd>{{q}}</kbd> :(</h4>
+                  <p>Intenta otra forma de escribirlo, o sus siglas</p>
+                  {% if user.is_staff %}
+                    
+                  <p>También puedes agregarlo en el admin</p>
+                  <p><a class="button round" href="/admin/terminos/termino/add/"><span class="icon-folder-plus"></span>Agregar Nuevo Termino</a></p>
+                    
+                  {% endif %}
+              </div>
+          </div>
+      </section>
+    {%endif%}
+  {% endblock listas %}
 {% endblock contenido %}

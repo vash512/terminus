@@ -13,7 +13,7 @@ from terminos.models import Termino
 from django.db.models import Q
 from actions import Paginador
 #numero maximo de elemento spor paginacion
-maximo=3
+maximo=6
 
 
 # Create your views here.
@@ -96,7 +96,7 @@ def log_in(request):
     else:
         return HttpResponseRedirect('/')
 
-
+@login_required(login_url='/corpuscontable')
 def terminos(request):
     q=request.GET.get('search','')
     pag=request.GET.get('pagina','')
@@ -127,7 +127,7 @@ def terminos(request):
             
             terminos=Paginador(terminos, maximo, pag)
 
-        ctx={'q':q, 'terminos':terminos, 'nTer':nTer, 'nTerQ':nTerQ}
+        ctx={'q':q, 'terminos':terminos, 'nTer':nTer, 'nTerQ':nTerQ, 'c_corpus':'active'}
         '''
         Variables y su funcion en la plantilla
         q           Contiene la busqueda solicitada por el cliente

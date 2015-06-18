@@ -11,7 +11,7 @@
                   <input type="search" name="search" placeholder="Busqueda de Terminos"{%if q%} value='{{q}}'{%endif%}>
                 </div>
                 <div class="small-3 columns">
-                  <button class="round expand left">Buscar</button>
+                  <button class="expand left">Buscar</button>
                 </div>
               </div>
             </div>
@@ -57,15 +57,15 @@
 <!-- grupo de paginacion-->
 {%endif%}
 
-{%if q and not terminos%}
-<section class="row">
-    <div class="medium-8 medium-centered columns text-center">
-        <panel class="callout radius">
-            <h4>No encontramos ningún termino parecido a {{q}} :(</h4>
-            <p>Intenta otra forma de escribirlo, o sus siglas</p>
-        </panel>
-    </div>
-</section>
-{%endif%}
+  {%if q and not terminos%}
+  <section class="row">
+      <div class="medium-8 medium-centered columns text-center">
+          <panel class="callout radius">
+              <h4>No encontramos ningún termino parecido a {{q}} :(</h4>
+              <p>Intenta otra forma de escribirlo, o sus siglas</p>
+          </panel>
+      </div>
+  </section>
+  {%endif%}
 {% endblock listas %}
 {% endblock contenido %}
