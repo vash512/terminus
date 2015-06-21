@@ -58,7 +58,7 @@
           {% else %}
           <li><a href="#" class="button secondary disabled"><span class="icon-undo2"></span>ANT.</a></li>
           {%endif%}
-          <li><a href="#" class="button secondary"><span class="icon-location"></span>{{terminos.number}}</a></li>
+          <li><a href="#" class="button secondary">{{terminos.number}} de {{terminos.paginator.num_pages}}</a></li>
           {%if terminos.has_next%}
           <li><a href="/terminos?{%if q%}search={{q}}&{%endif%}pagina={{terminos.next_page_number}}" class="button secondary"><span class="icon-redo2"></span>SIG.</a></li>
           {% else %}
