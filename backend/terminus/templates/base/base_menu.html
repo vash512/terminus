@@ -17,7 +17,7 @@
     <li class="{{c_home}}"><a href="/"><span class="icon-home"></span>HOME</a></li>
       <li class="{{c_about}}"><a href="/acercade"><span class="icon-library"></span>ACERCA DE</a></li>
       <li class="{{c_contacto}}"><a href="/contacto"><span class="icon-envelop"></span>CONTACTO</a></li>
-      <li class="{{c_corpus}}"><a href="/corpuscontable"><span class="icon-books"></span>ONTOLOGIA</a></li>
+      <li class="{{c_corpus}}"><a href="/terminos"><span class="icon-books"></span>ONTOLOGIA</a></li>
       
     </ul>
 
@@ -31,7 +31,6 @@
               <li><a href="/admin"><span class="icon-cog"></span>Administración del Sistema</a></li>
             {% endif %}
             <li><a href="/terminos"><span class="icon-books"></span>Corpus Contable</a></li>
-            <li><a href="/terminos"><span class="icon-book"></span>Documentos</a></li>
             <li><a href="/logout"><span class="icon-switch"></span>Cerrar Sesión</a></li>
           </ul>
         </li>
@@ -52,9 +51,13 @@
         <h3>Mapa de Sitio</h3>
         <nav class="foonav">
           <a href="/">Home</a>
+          {% if not user.is_anonymous %}
+          <a href="/logout">Cerrar Sesión</a>
+          {% else %}
           <a href="/login">Login</a>
+          {% endif %}
           <a href="/acercade">Acerca de</a>  
-          <a href="/corpuscontable">Ontologia</a>                
+          <a href="/terminos">Ontologia</a>                
           <a href="/contacto">Contacto</a>
         </nav>
         </div>

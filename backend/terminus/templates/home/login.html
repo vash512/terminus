@@ -7,18 +7,18 @@
         <form id="formulario" name="form" method="post" action=".">{% csrf_token %}
             <h1>Inicio de Sesión </h1>
             <div class="row collapse prefix-radius padding-top">
-                <div class="small-3 columns">
-                  <span class="prefix">Usuario</span>
+                <div class="small-4 columns">
+                  <span class="prefix"><span class="icon-user"></span>Usuario</span>
                 </div>
-                <div class="small-9 columns">
+                <div class="small-8 columns">
                   <input id="id_username" maxlength="100" name="username" type="text"  placeholder="Nombre de Usuario | Username" required>
                 </div>
               </div>
               <div class="row collapse prefix-radius">
-                <div class="small-3 columns">
-                  <span class="prefix">Contraseña</span>
+                <div class="small-4 columns">
+                  <span class="prefix"><span class="icon-key"></span>Contraseña</span>
                 </div>
-                <div class="small-9 columns">
+                <div class="small-8 columns">
                   <input type="password" id="id_password" name="password" placeholder="Contraseña" required>
                 </div>
                 <div class="small-12 columns">

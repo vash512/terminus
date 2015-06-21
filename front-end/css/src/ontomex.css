@@ -13,6 +13,17 @@ blockquote {
     font-style: italic;
     margin-bottom: 1rem;
 }
+.title-header {
+    background: linear-gradient(90deg, #9D50BB 10%, #6E48AA 90%);
+    padding-top: 2em;
+    padding-bottom: 2em;
+}
+.title-header h1, .title-header h4, .title-header span{
+    color: rgba(255,255,255,1);
+}
+.pricing-table .button{
+    margin-bottom: 0;
+}
 .mg-zero{
     margin: 0px;
 }

@@ -26,22 +26,25 @@
     </div>
 </aside>
 {% block listas %}
-{%if terminos%}
+  {%if terminos%}
   <section class="row padding-top">
-    <!--{% for termino in terminos %} -->
+    {% for termino in terminos %} 
         <article class="medium-6 columns text-center">
             <ul class="pricing-table">
-              <a href="/terminos?id={{termino.id}}"><li class="title">{{termino.nombre}}</li></a>
-              <li class="price">{{termino.descripcion}}</li>
-              <li class="bullet-item">{{termino.significado}}</li>
-              <li class="bullet-item">Subdominio: <a href="/corpuscontable?id={{termino.corpus.id}}">{{termino.corpus}}</a></li>
-              <li class="bullet-item">Documentos:</li>
-              <!--{% for doc in termino.documento.all  %} -->
-                <a href="{{doc.archivo.url}}" target="_blank"><li class="bullet-item">{{doc.nombre}}</li></a>
-              <!-- {% endfor %} -->
+              <a href="/terminos?id={{termino.id}}"><li class="title">{{termino.nombre|upper}}</li></a>
+              <li class="bullet-item">{{termino.descripcion}}</li>
+              <li class="bullet-item">Siglas: <span data-tooltip aria-haspopup="true" class="has-tip round" title="{{termino.nombre|upper}}">{{termino.significado|upper}}</span></li>
+              <li class="bullet-item"> Subdominio: <span class="icon-price-tag"></span><a href="/corpuscontable?id={{termino.corpus.id}}">{{termino.corpus}}</a></li>
+              <li class="bullet-item"><span title="documentos" class="icon-book"></span>
+              {% for doc in termino.documento.all  %}
+              <a href="{{doc.archivo.url}}" target="_blank">{{doc.nombre}}</a>
+              {% endfor %}
+              </li>
+              <li class="bullet-item"><a href="/terminos?id={{termino.id}}" class="button round">Más Detalles</a></li>
+           
             </ul>
         </article>
-   <!-- {% endfor %} -->
+   {% endfor %}
   </section>
 
 <!-- Links basicos del grupo de paginacion -->
