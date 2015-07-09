@@ -209,3 +209,7 @@ def registro(request):
         ctx={"regTer":registrado, "error": error, 'c_login':'active'}
         return render_to_response('home/registro.html', ctx,
                           context_instance=RequestContext(request))
+
+def ayuda(request):
+    return render_to_response('home/ayuda.html',
+                          context_instance=RequestContext(request))

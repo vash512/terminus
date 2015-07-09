@@ -11,6 +11,7 @@ urlpatterns=patterns('home.views',
     url(r'^contacto/', 'contacto' ),
     url(r'^acercade/', 'acercade'),
     url(r'^corpuscontable', 'corpus'),
+    url(r'^ayuda', 'ayuda'),
     #terminos urls de prueba
     url(r'^terminos', 'terminos'),
     url(r'^terminos/termino', 'termino_detalle'),

@@ -31,10 +31,12 @@
               <li><a href="/admin"><span class="icon-cog"></span>Administración del Sistema</a></li>
             {% endif %}
             <li><a href="/terminos"><span class="icon-books"></span>Corpus Contable</a></li>
+            <li><a href="/ayuda"><span class="icon-lifebuoy"></span>Ayuda, Comó Crear tu Acceso Directo</a></li>
             <li><a href="/logout"><span class="icon-switch"></span>Cerrar Sesión</a></li>
           </ul>
         </li>
       {% else %}
+
          <li class="{{c_login}}"><a href="/login"><span class="icon-user"></span>INICIAR SESION</a></li>
       {% endif %}
      
@@ -57,7 +59,8 @@
           <a href="/login">Login</a>
           {% endif %}
           <a href="/acercade">Acerca de</a>  
-          <a href="/terminos">Ontologia</a>                
+          <a href="/terminos">Ontologia</a>
+          <a href="/ayuda">Ayuda</a>          
           <a href="/contacto">Contacto</a>
         </nav>
         </div>
